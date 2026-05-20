@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>品牌服务知识库 MVP</title>
+  <style>
+    :root{--bg:#f6f7f9;--ink:#171717;--muted:#6b7280;--panel:#fff;--line:#e4e7ec;--red:#d0021b;--red-soft:#fff0f1;--blue:#1d4ed8;--blue-soft:#eaf1ff;--green:#137333;--green-soft:#eaf7ef;--amber:#b45309;--amber-soft:#fff5e5}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang SC","Microsoft YaHei",Arial,sans-serif}button,input,select,textarea{font:inherit}
+    header{background:#151515;color:#fff;display:flex;justify-content:space-between;align-items:center;padding:18px 32px}header small{display:block;color:#c9c9c9}.nav{display:flex;gap:8px}.nav button,.btn{border:0;border-radius:8px;cursor:pointer;font-weight:700;padding:9px 14px}.nav button{background:transparent;color:#e5e7eb}.nav button.active,.btn.red{background:var(--red);color:#fff}.btn{background:#171717;color:#fff}.btn.secondary{background:#fff;border:1px solid var(--line);color:#171717}
+    main{max-width:1180px;margin:0 auto;padding:30px 28px 56px}.hero{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:22px}.eyebrow{color:var(--red);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}h1,h2,h3,p{margin:0}h1{font-size:34px}.muted{color:var(--muted)}.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:20px}.grid{display:grid;gap:16px}.two{grid-template-columns:repeat(2,minmax(0,1fr))}.three{grid-template-columns:repeat(3,minmax(0,1fr))}.stack{display:grid;gap:12px}.toolbar{display:flex;gap:10px;flex-wrap:wrap}.search,input,select,textarea{border:1px solid var(--line);border-radius:8px;padding:10px 12px}.search{min-width:280px}.brand-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.tag{border-radius:999px;display:inline-flex;font-size:12px;font-weight:800;padding:7px 10px}.redtag{background:var(--red-soft);color:var(--red)}.bluetag{background:var(--blue-soft);color:var(--blue)}.greentag{background:var(--green-soft);color:var(--green)}.ambertag{background:var(--amber-soft);color:var(--amber)}
+    .tabs{background:#fff;border:1px solid var(--line);border-radius:10px;display:flex;gap:4px;overflow:auto;padding:6px;margin-bottom:18px}.tabs button{background:transparent;border:0;border-radius:8px;color:var(--muted);cursor:pointer;font-weight:800;padding:10px 12px;white-space:nowrap}.tabs button.active{background:var(--red);color:white}.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px}.kpi span{display:block;color:var(--muted);font-size:12px;margin-bottom:7px}.kpi strong{font-size:20px}.title{display:flex;gap:8px;align-items:center;margin-bottom:14px}.dot{background:var(--red);border-radius:99px;height:7px;width:7px}.item{border:1px solid var(--line);border-radius:9px;padding:14px}table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid var(--line);font-size:13px;line-height:1.55;padding:11px;text-align:left;vertical-align:top}th{background:#fafafa;color:var(--muted)}.form{display:grid;gap:16px}.form label{display:grid;gap:7px;font-size:13px;font-weight:700}.form textarea{min-height:230px;resize:vertical}pre{background:#111827;border-radius:10px;color:#f9fafb;font-size:12px;line-height:1.5;max-height:440px;overflow:auto;padding:18px;white-space:pre-wrap}.hidden{display:none}
+    @media(max-width:760px){header,.hero{align-items:stretch;flex-direction:column}.two,.three,.kpis{grid-template-columns:1fr}.brand-card{grid-template-columns:1fr}main{padding:22px 16px 40px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div><small>Brand Service KB</small><strong>品牌服务知识库</strong></div>
+    <nav class="nav">
+      <button class="active" onclick="showPage('brands',this)">品牌</button>
+      <button onclick="showPage('import',this)">上传资料</button>
+      <button onclick="showPage('reviews',this)">待确认 / 抽审</button>
+      <button onclick="showPage('exports',this)">Markdown 导出</button>
+    </nav>
+  </header>
+
+  <main id="brands">
+    <section class="hero">
+      <div><div class="eyebrow">Brands</div><h1>品牌列表</h1><p class="muted" style="margin-top:8px">快速找到品牌，查看当前风险、待确认问题和 PM 行动。</p></div>
+      <div class="toolbar"><input class="search" placeholder="搜索品牌 / 行业 / 当前阶段"><button class="btn secondary" onclick="showPage('import')">上传资料</button><button class="btn red">新建品牌</button></div>
+    </section>
+    <section class="stack">
+      <article class="brand-card"><div><h2>李宁</h2><p class="muted" style="margin-top:6px">运动服饰 / 运动用品</p><p style="margin-top:12px">当前阶段：618 大促监控阶段</p><div class="meta"><span class="tag greentag">Active</span><span class="tag redtag">高风险 3</span><span class="tag ambertag">待确认 6</span><span class="tag bluetag">行动 5</span><span class="tag">最近更新：2026-05-19</span></div></div><button class="btn" onclick="showPage('detail')">进入品牌</button></article>
+      <article class="brand-card"><div><h2>飞鹤</h2><p class="muted" style="margin-top:6px">母婴 / 奶粉</p><p style="margin-top:12px">当前阶段：内容复盘 + 下月规划</p><div class="meta"><span class="tag greentag">Active</span><span class="tag redtag">高风险 1</span><span class="tag ambertag">待确认 3</span><span class="tag bluetag">行动 5</span><span class="tag">最近更新：2026-05-18</span></div></div><button class="btn" onclick="showPage('detail')">进入品牌</button></article>
+    </section>
+  </main>
+
+  <main id="detail" class="hidden">
+    <section class="hero"><div><div class="eyebrow">Brand Knowledge Base</div><h1>李宁｜品牌服务知识库</h1><p class="muted" style="margin-top:8px">运动服饰 / 运动用品｜状态：Active｜最近更新：2026-05-19｜当前阶段：618 大促监控</p></div><div class="toolbar"><button class="btn secondary" onclick="showPage('import')">上传资料</button><button class="btn red" onclick="showPage('exports')">导出 Markdown</button></div></section>
+    <div class="tabs" id="tabs"></div>
+    <section id="tab-content"></section>
+  </main>
+
+  <main id="import" class="hidden">
+    <section class="hero"><div><div class="eyebrow">Import</div><h1>上传资料</h1><p class="muted" style="margin-top:8px">粘贴会议、聊天、复盘或 Brief 文本，系统保存 source 并生成结构化品牌知识草稿。</p></div></section>
+    <section class="grid two">
+      <article class="panel"><form class="form" onsubmit="event.preventDefault();parseImport()"><div class="grid two"><label>目标品牌<select id="targetBrand"><option value="">自动识别</option><option>李宁</option><option>飞鹤</option></select></label><label>来源类型<select id="sourceType"><option>会议纪要</option><option>聊天记录</option><option>项目复盘</option><option>品牌 Brief</option><option>执行反馈</option><option>其他</option></select></label></div><label>材料时间<input id="materialTime" value="2026-05-20 14:30"></label><label>原始材料<textarea id="material">李宁 2026-05-19 会议记录
+当前最高优先级是 618 每日监控，需要每日追踪竞品声量、爆发单品、行业变化、人群变化和异常投放动作。
+业务方强调多数据源口径不一致会影响看板可信度，竞品对比必须说明数据来源。
+短视频监控看板方向已认可，但需要补齐中类、下载按钮、挂车区分、SPU 货号维护，并确认千川短视频 ID 与罗盘数据能否匹配。</textarea></label><label>文件上传<input type="file" accept=".txt,.md,.csv"></label><label style="display:flex;align-items:center;gap:10px"><input id="autoCommit" type="checkbox" checked>AI 可唯一识别品牌时自动入库</label><button class="btn red">提交解析</button></form></article>
+      <article class="panel"><div class="title"><span class="dot"></span><h2>解析结果</h2></div><div id="parseResult" class="muted">提交后展示品牌识别、结构化摘要、入库状态和 source 预览。</div></article>
+    </section>
+  </main>
+
+  <main id="reviews" class="hidden">
+    <section class="hero"><div><div class="eyebrow">Review Queue</div><h1>待确认 / 抽审</h1><p class="muted" style="margin-top:8px">控制 AI 自动入库风险，处理品牌识别失败、多品牌材料和低置信度结论。</p></div></section>
+    <section class="grid two"><article class="panel"><div class="title"><span class="dot"></span><h2>待确认品牌</h2></div><div class="stack"><div class="item"><div class="meta" style="margin-top:0"><span class="tag redtag">品牌缺失</span><span class="tag ambertag">待处理</span></div><h3 style="margin-top:10px">未识别品牌的聊天记录</h3><p class="muted" style="margin-top:6px">需要 PM 选择已有品牌或新建品牌后再入库。</p><div class="toolbar" style="margin-top:12px"><button class="btn red">选择品牌</button><button class="btn secondary">新建品牌</button></div></div><div class="item"><div class="meta" style="margin-top:0"><span class="tag redtag">多品牌</span><span class="tag ambertag">待处理</span></div><h3 style="margin-top:10px">包含李宁与安踏的竞品对比材料</h3><p class="muted" style="margin-top:6px">原文完整保存，但本次只能确认一个目标品牌进行更新。</p></div></div></article><article class="panel"><div class="title"><span class="dot"></span><h2>AI 自动入库抽审</h2></div><div class="stack"><div class="item"><div class="meta" style="margin-top:0"><span class="tag greentag">已自动入库</span><span class="tag bluetag">抽审样本</span></div><h3 style="margin-top:10px">李宁 2026-05-19 会议记录</h3><p class="muted" style="margin-top:6px">生成长期禁忌、阶段关注、商机、风险和 PM Top 5 行动。</p><div class="toolbar" style="margin-top:12px"><button class="btn red">确认无误</button><button class="btn secondary">修改结论</button><button class="btn secondary">撤回更新</button></div></div></div></article></section>
+  </main>
+
+  <main id="exports" class="hidden">
+    <section class="hero"><div><div class="eyebrow">Markdown Export</div><h1>Markdown 双写导出</h1><p class="muted" style="margin-top:8px">数据库是主数据源，同时导出符合 brand-kb Skill 规则的主文档和 source 原文归档。</p></div><button class="btn red">重新生成导出</button></section>
+    <section class="grid two"><article class="panel"><div class="title"><span class="dot"></span><h2>品牌主文档</h2></div><p class="muted" style="margin-bottom:12px">exports/李宁/李宁.md</p><pre id="brandMd"></pre></article><article class="panel"><div class="title"><span class="dot"></span><h2>Source 原文归档</h2></div><p class="muted" style="margin-bottom:12px">exports/李宁/sources/2026-05-19_1930_会议纪要.md</p><pre id="sourceMd"></pre></article></section>
+  </main>
+
+  <script>
+    const pages=["brands","detail","import","reviews","exports"];
+    const tabs=["新人速览","关键联系人","长期原则","阶段关注","商机与风险","PM 行动清单","待确认问题","更新记录 / Source 追溯"];
+    const data={problems:["数据口径一致性","诊断基准可信度","短视频消耗数据完整性","内容到商品承接口径","自动化诊断边界"],actions:["产出 618 每日监控看板初版，建立每日反馈机制","完成短视频监控看板开发前调整清单与技术排期确认","输出单品监控看板页面原型和诊断基准方案","持续跟踪数据口径一致性和自动化边界","等待下半年销售目标，准备目标拆解框架"],risks:["多数据源口径不一致","短视频挂车消耗数据不完整","618 监控初版交付延迟"],questions:["参会角色的真实姓名、所属方和决策关系是什么？","618 每日监控的固定交付格式和反馈渠道是什么？"]};
+    function showPage(id,btn){pages.forEach(p=>document.getElementById(p).classList.toggle("hidden",p!==id));document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));if(btn)btn.classList.add("active");if(id==="detail")renderTabs();if(id==="exports")renderMarkdown()}
+    function renderTabs(){const nav=document.getElementById("tabs");nav.innerHTML=tabs.map((t,i)=>`<button class="${i===0?"active":""}" onclick="renderTab('${t}',this)">${t}</button>`).join("");renderTab(tabs[0],nav.firstChild)}
+    function renderTab(tab,btn){document.querySelectorAll("#tabs button").forEach(b=>b.classList.remove("active"));btn&&btn.classList.add("active");const c=document.getElementById("tab-content");if(tab==="新人速览")c.innerHTML=`<section class="stack"><div class="kpis"><div class="kpi"><span>当前商机</span><strong>5</strong></div><div class="kpi"><span>高风险</span><strong>3</strong></div><div class="kpi"><span>PM 行动</span><strong>5</strong></div><div class="kpi"><span>待确认问题</span><strong>6</strong></div></div><article class="panel"><div class="title"><span class="dot"></span><h2>当前核心目标</h2></div><p style="line-height:1.8">618 每日监控 + 短视频监控看板 + 单品监控看板 + 下半年直播间目标拆解。</p></article><article class="panel"><div class="title"><span class="dot"></span><h2>当前主要问题</h2></div><div class="meta">${data.problems.map((p,i)=>`<span class="tag ${i<2?"redtag":"ambertag"}">${p}</span>`).join("")}</div></article><div class="grid two"><article class="panel"><div class="title"><span class="dot"></span><h2>PM 当前最重要行动</h2></div><div class="stack">${data.actions.slice(0,3).map((a,i)=>`<div class="item"><h3>${i+1}. ${a}</h3><p class="muted" style="margin-top:6px">对应产出物和协同人已进入行动清单。</p></div>`).join("")}</div></article><article class="panel"><div class="title"><span class="dot"></span><h2>当前高风险</h2></div><div class="stack">${data.risks.map(r=>`<div class="item"><span class="tag redtag">高风险</span><h3 style="margin-top:10px">${r}</h3><p class="muted" style="margin-top:6px">需要明确数据源、口径、责任人和处理动作。</p></div>`).join("")}</div></article></div></section>`;else if(tab==="长期原则")c.innerHTML=`<section class="panel"><table><thead><tr><th>类型</th><th>结论</th><th>证据等级</th><th>置信度</th><th>服务影响</th></tr></thead><tbody><tr><td>长期偏好</td><td>更偏好能直接支撑业务决策的看板，而不是只展示数据的报表。</td><td>品牌行为</td><td>中</td><td>解释异常原因、对应动作和业务判断价值。</td></tr><tr><td>长期禁忌</td><td>不能在竞品 / 行业对比中混用不一致的数据口径。</td><td>品牌明示</td><td>高</td><td>关键指标必须标注来源和口径。</td></tr></tbody></table></section>`;else if(tab==="PM 行动清单")c.innerHTML=`<section class="panel stack">${data.actions.map((a,i)=>`<div class="item"><h3>${i+1}. ${a}</h3><p class="muted" style="margin-top:6px">对应产出物和协同人已进入行动清单。</p></div>`).join("")}</section>`;else if(tab==="待确认问题")c.innerHTML=`<section class="panel stack">${data.questions.map(q=>`<div class="item"><span class="tag ambertag">待确认</span><h3 style="margin-top:10px">${q}</h3></div>`).join("")}</section>`;else c.innerHTML=`<section class="panel"><p class="muted">此 Tab 内容待补充。</p></section>`}
+    function parseImport(){const text=document.getElementById("material").value;const selected=document.getElementById("targetBrand").value;const hits=selected?[selected]:["李宁","飞鹤","安踏"].filter(n=>text.includes(n));const unique=hits.length===1;document.getElementById("parseResult").innerHTML=`<div class="stack"><div class="meta" style="margin-top:0"><span class="tag ${unique?"greentag":"redtag"}">${unique?"唯一识别品牌":"进入人工确认"}</span><span class="tag bluetag">会议纪要</span><span class="tag ${unique?"greentag":"ambertag"}">${unique?"已自动入库":"待确认品牌"}</span></div><div><h3>识别品牌</h3><p class="muted" style="margin-top:6px">${hits.join("、")||"未识别"}</p></div><div><h3>本次更新摘要</h3><p class="muted" style="margin-top:6px;line-height:1.7">${text.slice(0,140)}</p></div><div class="grid two"><div class="item"><h3>长期原则</h3><p class="muted" style="margin-top:6px">涉及业务判断的看板必须标注数据来源和口径。</p></div><div class="item"><h3>阶段关注</h3><p class="muted" style="margin-top:6px">618 阶段监控优先级提升。</p></div></div><pre>---\nbrand: ${hits[0]||"待确认品牌"}\nsource_type: 会议纪要\nsource_time: ${document.getElementById("materialTime").value}\ncreated_at: 2026-05-20 16:30\nmaterial_time_status: known\ntarget_brand_only: true\n---\n\n# 原始材料\n\n${text}</pre><button class="btn red" onclick="showPage('${unique?"detail":"reviews"}')">${unique?"查看品牌看板":"去人工确认"}</button></div>`}
+    function renderMarkdown(){document.getElementById("brandMd").textContent=`---\nbrand: 李宁\naliases:\n  - 李宁品牌服务项目\ncreated_at: 2026-05-19\nupdated_at: 2026-05-19\nstatus: active\n---\n\n# 李宁｜品牌服务知识库\n\n## 1. 品牌总览\n\n- 品牌常用名：李宁\n- 品牌所属行业：运动服饰 / 运动用品\n- 当前业务阶段：618 大促监控阶段\n- 当前核心目标：618 每日监控 + 短视频监控看板 + 单品监控看板\n- 当前主要问题：数据口径一致性、诊断基准可信度、短视频消耗数据完整性\n\n## 2. 关键联系人与角色\n## 3. 长期原则\n## 4. 阶段关注\n## 5. 商机与风险\n## 6. PM 行动清单\n## 7. 待确认问题\n## 8. 更新记录`;document.getElementById("sourceMd").textContent=`---\nbrand: 李宁\nsource_type: 会议纪要\nsource_time: 2026-05-19 19:30\ncreated_at: 2026-05-20 16:30\nmaterial_time_status: known\ntarget_brand_only: true\n---\n\n# 原始材料\n\n此处保存完整会议、聊天、复盘或 Brief 原文。`}
+    renderTabs();
+  </script>
+</body>
+</html>
