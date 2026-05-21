@@ -267,7 +267,7 @@
     <aside>
       <div class="brand">
         <small>PRD v1.0</small>
-        <strong>品牌服务知识库</strong>
+        <strong>品牌项目知识库</strong>
       </div>
       <nav>
         <a href="#definition">产品定义</a>
@@ -276,8 +276,10 @@
         <a href="#ia">信息架构</a>
         <a href="#flow">核心流程</a>
         <a href="#pages">页面原型</a>
+        <a href="#create-flow">新建流程</a>
         <a href="#rules">数据规则</a>
         <a href="#question-examples">待确认示例</a>
+        <a href="#permission-examples">权限入库</a>
         <a href="#module-examples">模块示例</a>
         <a href="#acceptance">验收标准</a>
         <a href="#handoff">开发交付</a>
@@ -288,7 +290,7 @@
       <div class="hero">
         <div class="eyebrow">MVP Product Requirement Document</div>
         <h1>品牌服务知识库 MVP 第一版 PRD</h1>
-        <p>把散落在会议、聊天、复盘和 Brief 中的品牌服务信息，转化为可信、可追溯、可持续更新的品牌知识库，让新人和协作方快速理解一个品牌项目。</p>
+        <p>把散落在会议、聊天、复盘和 Brief 中的品牌服务信息，转化为可信、可追溯、可持续更新的项目知识库。知识库以“品牌 + 项目/服务线”为隔离单位，让新人和协作方快速理解一个具体品牌项目。</p>
         <div class="tag-row">
           <span class="tag red">完整 Web App</span>
           <span class="tag blue">Postgres 主存储</span>
@@ -302,11 +304,11 @@
         <div class="grid two">
           <div class="card">
             <h3>一句话定义</h3>
-            <p class="muted">品牌服务知识库是一个面向品牌服务团队的项目上下文中枢，帮助每个经手品牌的人快速知道项目背景、当前状态、关键风险、长期原则和下一步行动。</p>
+            <p class="muted">品牌项目知识库是一个面向品牌服务团队的项目上下文中枢。它以“品牌 + 项目/服务线”为知识隔离单位，帮助每个经手项目的人快速知道项目背景、当前状态、关键风险、长期原则和下一步行动。</p>
           </div>
           <div class="card">
             <h3>核心闭环</h3>
-            <p class="muted">Web 端上传/粘贴沟通记录 → 保存原始材料 → AI 解析结构化品牌知识 → 自动入库，人可抽审 → 生成新人速览看板与 Markdown 归档。</p>
+            <p class="muted">Web 端上传/粘贴沟通记录 → 保存原始材料 → AI 识别品牌与项目 → 解析结构化知识 → 匹配唯一项目知识库后入库 → 生成新人速览看板与 Markdown 归档。</p>
           </div>
         </div>
       </section>
@@ -317,10 +319,11 @@
           <div class="card">
             <h3>第一版必须包含</h3>
             <ul>
-              <li>品牌项目档案：基础信息、业务阶段、核心目标、主要问题、合作机会。</li>
+              <li>项目知识库档案：品牌、项目名、服务线、负责人、业务阶段、核心目标、主要问题、合作机会。</li>
               <li>上游资料输入：粘贴文本、上传文本类文件、选择来源类型、保存完整原始材料。</li>
-              <li>AI 结构化解析：识别品牌、材料类型、长期原则、阶段关注、商机风险、PM Top 5、待确认问题。</li>
-              <li>自动入库 + 人工抽审：唯一识别品牌时自动入库，无法识别时进入人工确认。</li>
+              <li>AI 结构化解析：识别品牌、项目/服务线、材料类型、长期原则、阶段关注、商机风险、PM Top 5、待确认问题。</li>
+              <li>自动入库 + 人工抽审：唯一识别项目知识库时自动入库；只识别品牌但项目不唯一时进入人工确认。</li>
+              <li>项目级权限：同一品牌下不同项目知识库隔离授权，例如李宁 DP 和李宁 ISV 是两个知识库。</li>
               <li>新人速览看板：展示品牌总览、当前重点、原则、风险、行动、问题与更新记录。</li>
               <li>Markdown 双写导出：数据库为主，同时导出主文档和 source 原文归档。</li>
             </ul>
@@ -331,7 +334,7 @@
               <li>后台监听微信、飞书、钉钉。</li>
               <li>自动读取企业 IM。</li>
               <li>完整 OCR 和图片/视频/直播间画面视觉理解。</li>
-              <li>完整 RBAC 权限体系。</li>
+              <li>复杂组织级 RBAC；第一版只做项目级 负责人 / PM / Reviewer / Contributor / Viewer。</li>
               <li>多品牌经营管理驾驶舱。</li>
               <li>自动向客户发送消息或替 PM 做业务决策。</li>
             </ul>
@@ -357,8 +360,8 @@
           <thead><tr><th>一级页面</th><th>目标</th><th>关键内容</th></tr></thead>
           <tbody>
             <tr><td>登录页</td><td>轻量身份识别</td><td>登录、上传人/抽审人记录、品牌访问基础控制</td></tr>
-            <tr><td>品牌列表页</td><td>快速找到品牌</td><td>搜索、品牌卡片、高风险数、待确认数、行动数</td></tr>
-            <tr><td>品牌详情页</td><td>10 分钟理解品牌</td><td>新人速览、联系人、长期原则、阶段关注、商机风险、行动、问题、更新记录</td></tr>
+            <tr><td>项目知识库列表页</td><td>快速找到具体项目</td><td>品牌、项目名、服务线、负责人、高风险数、待确认数、行动数、权限状态</td></tr>
+            <tr><td>项目知识库详情页</td><td>10 分钟理解项目</td><td>新人速览、联系人、长期原则、阶段关注、商机风险、行动、问题、更新记录</td></tr>
             <tr><td>上传资料页</td><td>上游数据输入</td><td>目标品牌、来源类型、材料时间、文本/文件、自动入库开关</td></tr>
             <tr><td>待确认 / 抽审页</td><td>控制 AI 风险</td><td>品牌确认、多品牌材料、低置信度结论、撤回更新</td></tr>
             <tr><td>Markdown 导出页</td><td>保留知识库归档</td><td>品牌主文档、source 原文归档、导出记录</td></tr>
@@ -381,27 +384,60 @@
       <section id="pages">
         <div class="section-head"><span class="dot"></span><h2>6. 页面原型说明</h2></div>
         <div class="grid two">
-          <div class="card"><h3>品牌列表页</h3><p class="muted">包含搜索、新建品牌、上传资料和品牌卡片。品牌卡片展示行业、业务阶段、更新时间、高风险、待确认、行动数和状态。</p></div>
+          <div class="card"><h3>项目知识库列表页</h3><p class="muted">包含搜索、新建品牌 / 项目知识库、上传资料和项目卡片。项目卡片展示品牌、项目名、服务线、负责人、业务阶段、更新时间、高风险、待确认、行动数和权限状态。</p></div>
           <div class="card"><h3>上传资料页</h3><p class="muted">包含目标品牌、来源类型、材料时间、原始文本、文件上传、自动入库开关和解析结果。</p></div>
-          <div class="card"><h3>品牌详情页</h3><p class="muted">包含 8 个 Tab，首屏优先展示新人速览：核心目标、主要问题、关键数字、重要行动和高风险。</p></div>
-          <div class="card"><h3>待确认 / 抽审页</h3><p class="muted">处理品牌缺失、多品牌、低置信度、AI 自动入库抽审，支持确认、修改、撤回。待确认问题需要展示"为什么要确认、问谁、怎么问、确认后写到哪里"。</p></div>
+          <div class="card"><h3>项目知识库详情页</h3><p class="muted">包含 8 个 Tab，首屏优先展示新人速览：核心目标、主要问题、关键数字、重要行动和高风险。同品牌不同项目不混看。</p></div>
+          <div class="card"><h3>待确认 / 抽审页</h3><p class="muted">处理品牌缺失、多品牌、低置信度、AI 自动入库抽审，支持确认、修改、撤回。待确认问题需要展示“为什么要确认、问谁、怎么问、确认后写到哪里”。</p></div>
         </div>
       </section>
 
+      <section id="create-flow">
+        <div class="section-head"><span class="dot"></span><h2>7. 新建品牌 / 项目知识库</h2></div>
+        <div class="grid two">
+          <div class="card">
+            <h3>创建入口</h3>
+            <p class="muted">项目知识库列表页提供“新建品牌 / 项目”按钮。进入后第一步选择创建类型：已有品牌下新建项目知识库，或新品牌 + 首个项目知识库。选择“新品牌 + 首个项目知识库”后，不应再展示已有品牌下拉框，只展示新品牌名称输入框。</p>
+          </div>
+          <div class="card">
+            <h3>必填字段</h3>
+            <p class="muted">品牌名称、项目 / 服务线名称、服务类型、我方项目负责人、当前阶段、初始权限、当前核心目标。初始成员可选，但建议创建时填写 Owner、PM、Reviewer。选择“新品牌 + 首个项目知识库”时，项目 / 服务线名称应清空，不沿用已有品牌示例。</p>
+          </div>
+          <div class="card">
+            <h3>创建结果</h3>
+            <p class="muted">系统创建独立项目知识库，初始化 8 个知识区，并建立项目级权限。新建后知识区为空或展示占位提示，不自动继承同品牌其他项目的 source 全文。</p>
+          </div>
+          <div class="card">
+            <h3>下一步动作</h3>
+            <p class="muted">创建成功后引导用户上传 Brief、会议纪要、聊天记录或项目复盘，用 source 生成首版新人速览、联系人、阶段关注和行动清单。</p>
+          </div>
+        </div>
+        <table>
+          <thead><tr><th>字段</th><th>定义</th><th>作用</th></tr></thead>
+          <tbody>
+            <tr><td>服务类型</td><td>来自我方服务目录，不是用户随意输入。第一版可内置 DP 代运营 / 数据看板、ISV 数据服务 / 工具交付、内容策略 / 达人营销、直播运营、投放优化、其他。</td><td>用于区分项目模板、默认字段、权限范围和看板重点。</td></tr>
+            <tr><td>我方项目负责人</td><td>不是品牌方负责人，而是我方对该项目知识库负责的人。字段来自内部用户账号体系，应使用下拉/搜索选择，不建议自由输入。</td><td>默认拥有 Owner 权限，负责成员管理、关键抽审和知识质量；选择账号后用于权限授权、操作记录和通知。</td></tr>
+            <tr><td>当前阶段</td><td>使用枚举，不建议自由输入。建议枚举：项目启动 / 资料收集、方案共创 / 需求确认、执行中 / 日常服务、大促 / 活动监控、复盘 / 续约准备、暂停 / 待重启。</td><td>显示在新人速览首屏；作为 AI 入库时判断阶段关注、PM 行动和待确认问题优先级的上下文。</td></tr>
+          </tbody>
+        </table>
+      </section>
+
       <section id="rules">
-        <div class="section-head"><span class="dot"></span><h2>7. 数据规则</h2></div>
+        <div class="section-head"><span class="dot"></span><h2>8. 数据规则</h2></div>
         <table>
           <thead><tr><th>类型</th><th>规则</th></tr></thead>
           <tbody>
+            <tr><td>知识隔离单位</td><td>知识库按“品牌 + 项目/服务线”隔离，不按品牌单独聚合。示例：李宁 DP 项目和李宁 ISV 项目是两个项目知识库，不能互相写入或默认互相可见。</td></tr>
+            <tr><td>入库匹配规则</td><td>自动入库必须匹配到唯一项目知识库。只识别到品牌但项目/服务线不唯一时，进入人工确认；确认前只保存 source，不刷新任何当前知识区。</td></tr>
+            <tr><td>项目级权限</td><td>每个项目知识库有独立成员表。负责人 可管理成员和最终抽审；PM 可上传、确认问题、更新行动；Reviewer 可抽审 AI 入库；Contributor 可上传资料和查看；Viewer 只读。</td></tr>
             <tr><td>证据等级</td><td>品牌明示、品牌行为、项目结果、服务方观察、待确认。</td></tr>
             <tr><td>长期原则置信度</td><td>高、中、低。待确认信息不能进入长期原则。</td></tr>
-            <tr><td>阶段关注状态</td><td>当前区只展示"当前有效"和"待复核"；已过期、已证伪进入更新记录。</td></tr>
+            <tr><td>阶段关注状态</td><td>当前区只展示“当前有效”和“待复核”；已过期、已证伪进入更新记录。</td></tr>
             <tr><td>风险等级</td><td>高：影响客户信任/续约/预算/交付/投诉；中：影响效率或方案质量；低：需要观察。</td></tr>
             <tr><td>PM 行动清单</td><td>固定 5 个当前槽位：必须立刻处理、本周重点推进、下次沟通前准备、持续观察、暂缓但保留机会。</td></tr>
             <tr><td>行动状态更新</td><td>当前状态为未开始、进行中、等待外部。PM 可手动更新；新 source 入库时 AI 可建议更新。已完成、已取消或被更高优事项替换的行动从当前 Top 5 移出，并写入更新记录。</td></tr>
             <tr><td>待确认问题处理</td><td>状态为待提问、已提问待回复、已确认、已取消。当前区展示待提问和已提问待回复；已确认后转入对应知识区，已取消后进入更新记录。</td></tr>
-            <tr><td>标为已提问待回复</td><td>点击后打开"记录提问动作"表单，填写实际询问对象、提问渠道、提问时间、预计复核时间和实际发出去的问题。保存后状态变为已提问待回复，但不写入知识库结论。</td></tr>
-            <tr><td>确认并写入知识库</td><td>点击后打开"填写回复并写入知识库"表单。用户在这里填写对方回复/已确认结论；系统根据问题类型和回复内容自动判断写入位置，并生成结构化摘要。PM 只确认系统建议，必要时走高级修改。保存后系统将摘要写入联系人、阶段关注、长期原则、风险或 PM 行动清单，并关闭该问题。</td></tr>
+            <tr><td>标为已提问待回复</td><td>点击后打开“记录提问动作”表单，填写实际询问对象、提问渠道、提问时间、预计复核时间和实际发出去的问题。保存后状态变为已提问待回复，但不写入知识库结论。</td></tr>
+            <tr><td>确认并写入知识库</td><td>点击后打开“填写回复并写入知识库”表单。用户在这里填写对方回复/已确认结论；系统根据问题类型和回复内容自动判断写入位置，并生成结构化摘要。PM 只确认系统建议，必要时走高级修改。保存后系统将摘要写入联系人、阶段关注、长期原则、风险或 PM 行动清单，并关闭该问题。</td></tr>
             <tr><td>写入位置判断</td><td>默认由系统判断，不要求 PM 手选。联系人类问题写入关键联系人；阶段/时间/当前目标类问题写入阶段关注；数据缺口/口径/无法匹配类问题写入风险；完成/等待/推进类回复更新 PM 行动；长期偏好/禁忌/判断标准类回复写入长期原则。</td></tr>
             <tr><td>Source 归档</td><td>保存完整原文，主文档只引用必要摘要和来源，不保存完整聊天或会议全文。</td></tr>
           </tbody>
@@ -409,7 +445,7 @@
       </section>
 
       <section id="question-examples">
-        <div class="section-head"><span class="dot"></span><h2>8. 待确认问题示例</h2></div>
+        <div class="section-head"><span class="dot"></span><h2>9. 待确认问题示例</h2></div>
         <table>
           <thead><tr><th>待确认问题</th><th>为什么需要确认</th><th>问谁</th><th>建议问法</th><th>确认后处理</th></tr></thead>
           <tbody>
@@ -463,8 +499,30 @@
         </div>
       </section>
 
+      <section id="permission-examples">
+        <div class="section-head"><span class="dot"></span><h2>10. 权限与入库示例</h2></div>
+        <div class="grid two">
+          <div class="card">
+            <h3>为什么要隔离</h3>
+            <p class="muted">同一品牌下可能有多个项目或服务线，例如李宁 DP 和李宁 ISV。它们共享品牌名，但服务范围、数据权限、联系人、风险和行动不同，必须是两个知识库。</p>
+          </div>
+          <div class="card">
+            <h3>自动入库判断</h3>
+            <p class="muted">材料写“李宁 DP 项目 618 每日监控”时，可匹配到李宁 DP 项目并自动入库；材料只写“李宁会议记录”时，系统发现李宁下有 DP 和 ISV 两个知识库，必须进入人工确认。</p>
+          </div>
+          <div class="card">
+            <h3>项目角色</h3>
+            <p class="muted">负责人：管理成员和最终质量；PM：处理待确认和行动；Reviewer：抽审 AI 自动入库；Contributor：上传资料；Viewer：只读查看。</p>
+          </div>
+          <div class="card">
+            <h3>默认权限策略</h3>
+            <p class="muted">用户只能看到自己参与的项目知识库。跨项目复用知识必须通过复制/引用机制，不能直接共享 source 全文。</p>
+          </div>
+        </div>
+      </section>
+
       <section id="module-examples">
-        <div class="section-head"><span class="dot"></span><h2>9. 核心模块示例</h2></div>
+        <div class="section-head"><span class="dot"></span><h2>11. 核心模块示例</h2></div>
         <div class="grid two">
           <div class="card">
             <h3>关键联系人</h3>
@@ -486,7 +544,7 @@
       </section>
 
       <section id="acceptance">
-        <div class="section-head"><span class="dot"></span><h2>10. 验收标准</h2></div>
+        <div class="section-head"><span class="dot"></span><h2>12. 验收标准</h2></div>
         <ol>
           <li>PM 能在 Web 端上传一段会议记录并生成结构化品牌知识。</li>
           <li>系统能保存完整原始材料，并能追溯每条关键结论来源。</li>
@@ -501,7 +559,7 @@
       </section>
 
       <section id="handoff">
-        <div class="section-head"><span class="dot"></span><h2>11. 提交开发所需材料</h2></div>
+        <div class="section-head"><span class="dot"></span><h2>13. 提交开发所需材料</h2></div>
         <div class="callout">
           <strong>建议交付方式：</strong>把下面这些材料作为一个开发包提交，避免开发只看到页面、不理解知识沉淀规则。
         </div>
